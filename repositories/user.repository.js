@@ -49,6 +49,9 @@ export const deleteUserById = async (id) => {
     return await User.findByIdAndDelete(id);
 };
 
+//TODO Agregar el funcionamiento para agregar y cambiar el progreso del usuario
+//En caso de que se implemente con el updateById ignorar y borrar el comentario anterior
+
 export default {
     findUserByEmail,
     findUserById,
