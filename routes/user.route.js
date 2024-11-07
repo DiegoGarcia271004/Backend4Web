@@ -3,9 +3,9 @@ import {register, login} from '../controllers/user.controller.js';
 import { UserLoginValidationRules, userRegisterValidationRules } from "../validators/user.validator.js";
 import validate from "../middlewares/validation.middleware.js";
 
-const router = express.Router();
+const userRouter = express.Router();
 
-router.post('/register', userRegisterValidationRules, validate, register);
-router.post('/login', UserLoginValidationRules, validate, login);
+userRouter.post('/register', userRegisterValidationRules, validate, register);
+userRouter.post('/login', UserLoginValidationRules, validate, login);
 
-export default router;
+export default userRouter;

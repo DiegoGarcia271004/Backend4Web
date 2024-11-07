@@ -11,3 +11,17 @@ export class InvalidCredentialsError extends Error {
         this.name = 'InvalidCredentialsError';
     };
 };
+
+export class NotFoundUserError extends Error {
+    constructor(message = 'Email de usuario no valido') {
+        super(message);
+        this.name = 'NotFoundUserError'
+    }
+}
+
+export class NotFounProgressError extends Error {
+    constructor(message = 'Progreso no encontrado para el usuario') {
+        super(message);
+        this.name = 'NotFoundProgressError'
+    }
+}

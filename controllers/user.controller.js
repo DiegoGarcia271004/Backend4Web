@@ -30,7 +30,7 @@ export const login = async (req, res) => {
 
 	try {
 		const loginData = await userService.loginUser({ email, password });
-		res.json(loginData);
+		res.status(200).json(loginData);
 	} catch (error) {
 		if (error instanceof InvalidCredentialsError) {
 			return res.status(400).json({ message: error.message });

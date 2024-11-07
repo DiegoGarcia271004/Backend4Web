@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema(
 	{timestamps: true}
 );
 
-
 //hasheo de la contraseña
 userSchema.pre('save', async function (next) {
 	if(!this.isModified('password')) return next();
