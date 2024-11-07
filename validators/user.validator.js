@@ -10,6 +10,8 @@ export const userRegisterValidationRules = [
 ];
 
 export const UserLoginValidationRules = [
-	body('email').isEmail().withMessage('Se requiere un email válido'),
+	body('email')
+		.notEmpty().withMessage('Se requiere un correo electronico')
+		.isEmail().withMessage('Se requiere un email válido'),
 	body('password').notEmpty().withMessage('Se requiere una contraseña')
 ];
