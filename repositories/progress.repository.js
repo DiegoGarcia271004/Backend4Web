@@ -1,4 +1,4 @@
-import Progress from "../models/progress.model";
+import Progress from "../models/progress.model.js";
 
 export const findProgressByIduser = async (id) => {
     return await Progress.findOne({ user: id });

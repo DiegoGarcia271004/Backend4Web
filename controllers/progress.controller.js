@@ -12,8 +12,10 @@ export const createProgressController = async (req, res) => {
 
   } catch (error) {
 
-    if (error instanceof NotFoundUserError) 
+    if (error instanceof NotFoundUserError) {
       res.status(400).json({ message: error.message });
+      return;
+    }
 
     res.status(404).json({
       message: 'Error al crear el progreso para el nuevo usuario: ',
@@ -33,11 +35,15 @@ export const getProgressController = async (req, res) => {
 
   } catch (error) {
 
-    if (error instanceof NotFoundUserError)
+    if (error instanceof NotFoundUserError) {
       res.status(400).json({ message: error.message });
+      return;
+    }
 
-    if (error instanceof NotFounProgressError)
+    if (error instanceof NotFounProgressError) {
       res.status(400).json({ message: error.message });
+      return;
+    }
 
     res
       .status(404)
@@ -62,12 +68,14 @@ export const updateProgressController = async (req, res) => {
       .json({ message: "Progreso actualizado exitosamente", updatedProgress });
   } catch (error) {
 
-    if(error instanceof NotFounProgressError) 
-        res.status(400).json({ message: error.message });
+    if(error instanceof NotFounProgressError) {
+      res.status(400).json({ message: error.message });
+      return;
+    }
 
     res.status(400).json({ 
-        message: 'Error al actualizar el progreso del usuario', 
-        error: error.message 
+      message: 'Error al actualizar el progreso del usuario', 
+      error: error.message 
     });
   }
 };

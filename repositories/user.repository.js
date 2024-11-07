@@ -1,4 +1,4 @@
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 
 //Funciones necesarias para: encontrar, crear, actualizar y eliminar usuarios.
 

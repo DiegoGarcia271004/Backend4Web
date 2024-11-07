@@ -9,7 +9,7 @@ const progressSchema = new mongoose.Schema(
             required: true,
         },
         steps: {
-            type: [boolean],
+            type: [Boolean],
             required: true,
         },
     },
