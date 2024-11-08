@@ -16,7 +16,11 @@ const userSchema = new mongoose.Schema(
 		password: {
 			type: String,
 			required: true,
-		}//TODO Agregar el atributo donde se guardará el array de las tareas completadas
+		},
+		steps: {
+			type: [Boolean], 
+			required: true,
+		},
 	},
 	{timestamps: true}
 );

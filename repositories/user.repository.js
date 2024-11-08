@@ -12,21 +12,12 @@ export const findUserByEmail = async (email) => {
 };
 
 /**
- * Función encargada de buscar un usuario utilizando su ID
- * @param {String} id -Recibe el id del usuario a buscar
- * @returns {Promise<User|null>} -Retorna al usuario o null en caso de no encontrarlo
- */
-export const findUserById = async (id) => {
-    return await User.findOne(id);
-};
-
-/**
  * Función encargada de crear un nuevo usuario
  * @param {Object} userData -Recibe los datos del usuario y crea un nuevo objeto User con estos datos
  * @returns {Promise<User>} Retorna un User con los datos ingresados
  */
-export const createUser = async ({ username, email, password }) => {
-    const user = new User({ username, email, password });
+export const createUser = async ({ username, email, password, steps }) => {
+    const user = new User({ username, email, password, steps });
     return await user.save();
 };
 
@@ -37,7 +28,15 @@ export const createUser = async ({ username, email, password }) => {
  * @returns {Promise<User|null>} Retorna el usuario actualizado o null en caso de no encontrarlo
  */
 export const updateUserById = async (id, updates) => {
-    return await User.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
+    console.log(id, updates)
+    return await User.findByIdAndUpdate(
+        { _id: id }, 
+        { steps: updates }, 
+        { 
+            new: true, 
+            runValidators: true 
+        }
+    );
 };
 
 /**
@@ -47,6 +46,15 @@ export const updateUserById = async (id, updates) => {
  */
 export const deleteUserById = async (id) => {
     return await User.findByIdAndDelete(id);
+};
+
+/**
+ * Función encargada de buscar un usuario utilizando su ID
+ * @param {String} id -Recibe el id del usuario a buscar
+ * @returns {Promise<User|null>} -Retorna al usuario o null en caso de no encontrarlo
+ */
+export const findUserById = async (id) => {
+    return await User.findOne(id);
 };
 
 //TODO Agregar el funcionamiento para agregar y cambiar el progreso del usuario
